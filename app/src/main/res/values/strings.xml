@@ -1,3 +1,29 @@
 <resources>
-    <string name="app_name">laba1</string>
+    <string name="app_name">Playlist Maker</string>
+    <string name="menu_search">Поиск</string>
+    <string name="menu_playlists">Плейлисты</string>
+    <string name="menu_favorites">Избранное</string>
+    <string name="menu_settings">Настройки</string>
+    <string name="settings_dark_theme">Тёмная тема</string>
+    <string name="settings_share">Поделиться приложением</string>
+    <string name="settings_support">Написать в поддержку</string>
+    <string name="settings_agreement">Пользовательское соглашение</string>
+    <string name="share_link">https://practicum.yandex.ru/android-developer/</string>
+    <string name="support_email">student@example.com</string>
+    <string name="support_subject">Сообщение разработчикам Playlist Maker</string>
+    <string name="support_body">Спасибо разработчикам за крутое приложение!</string>
+    <string name="agreement_title">Соглашение</string>
+    <string name="agreement_text">Оферта на оказание образовательных услуг дополнительного образования Яндекс.Практикум для физических лиц\n\nДанный документ является действующим, если расположен по адресу: https://yandex.ru/legal/practicum_offer\n\nРоссийская Федерация, город Москва\n\n1. ТЕРМИНЫ\n\nПонятия, используемые в Оферте, означают следующее: Авторизованные адреса — адреса электронной почты каждой Стороны. Авторизованным адресом Исполнителя является адрес электронной почты, указанный в разделе 11 Оферты. Авторизованным адресом Студента является адрес электронной почты, указанный Студентом в Личном кабинете.\n\nВводный курс — начальный Курс обучения по представленным на Сервисе Программам обучения в рамках выбранной Студентом Профессии или Курсу, рассчитанный на определенное количество часов самостоятельного обучения.</string>
+    <string name="search_hint">Поиск</string>
+    <string name="search_history_title">Вы искали</string>
+    <string name="search_clear">Очистить</string>
+    <string name="search_nothing_found">Ничего не нашлось</string>
+    <string name="favorites_empty">Ваша медиатека пуста</string>
+    <string name="new_playlist_title">Новый плейлист</string>
+    <string name="new_playlist_name">Название*</string>
+    <string name="new_playlist_description">Описание</string>
+    <string name="new_playlist_create">Создать</string>
+    <string name="add_to_playlist_title">Добавить в плейлист</string>
+    <string name="back">Назад</string>
+    <string name="clear">Очистить</string>
 </resources>
