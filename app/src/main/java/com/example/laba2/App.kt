@@ -1,4 +1,5 @@
 package com.example.laba2
 
-class App {
-}
+import android.app.Application
+
+class App : Application()
