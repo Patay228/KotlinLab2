@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.laba2.ui.main.MainFragment"
+        android:label="MainFragment">
+        <action android:id="@+id/action_main_to_search"
+            app:destination="@id/searchFragment"/>
+        <action android:id="@+id/action_main_to_playlists"
+            app:destination="@id/playlistsFragment"/>
+        <action android:id="@+id/action_main_to_favorites"
+            app:destination="@id/favoritesFragment"/>
+        <action android:id="@+id/action_main_to_settings"
+            app:destination="@id/settingsFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.laba2.ui.search.SearchFragment"
+        android:label="SearchFragment">
+        <action android:id="@+id/action_search_to_track"
+            app:destination="@id/trackDetailsFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.laba2.ui.settings.SettingsFragment"
+        android:label="SettingsFragment">
+        <action android:id="@+id/action_settings_to_agreement"
+            app:destination="@id/agreementFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/agreementFragment"
+        android:name="com.example.laba2.ui.agreement.AgreementFragment"
+        android:label="AgreementFragment"/>
+
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.example.laba2.ui.favorites.FavoritesFragment"
+        android:label="FavoritesFragment">
+        <action android:id="@+id/action_favorites_to_track"
+            app:destination="@id/trackDetailsFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/playlistsFragment"
+        android:name="com.example.laba2.ui.playlist.PlaylistsFragment"
+        android:label="PlaylistsFragment">
+        <action android:id="@+id/action_playlists_to_new"
+            app:destination="@id/newPlaylistFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/newPlaylistFragment"
+        android:name="com.example.laba2.ui.playlist.NewPlaylistFragment"
+        android:label="NewPlaylistFragment"/>
+
+    <fragment
+        android:id="@+id/trackDetailsFragment"
+        android:name="com.example.laba2.ui.track.TrackDetailsFragment"
+        android:label="TrackDetailsFragment">
+        <action android:id="@+id/action_track_to_add_playlist"
+            app:destination="@id/addToPlaylistFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/addToPlaylistFragment"
+        android:name="com.example.laba2.ui.playlist.AddToPlaylistFragment"
+        android:label="AddToPlaylistFragment"/>
+
+    <argument
+        android:name="trackId"
+        app:argType="long"
+        android:defaultValue="-1L"/>
+</navigation>
