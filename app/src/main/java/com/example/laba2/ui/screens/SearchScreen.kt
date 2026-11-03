@@ -17,7 +17,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
@@ -35,6 +34,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
@@ -58,18 +58,22 @@ fun SearchScreen(
             .background(MaterialTheme.colorScheme.background)
             .statusBarsPadding()
     ) {
-        // Top App Bar with back button and screen title
+        // Top Bar: Back button + Screen title
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 4.dp, vertical = 8.dp),
+                .padding(horizontal = 4.dp, vertical = 4.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            IconButton(onClick = onBackClick) {
+            IconButton(
+                onClick = onBackClick,
+                modifier = Modifier.size(48.dp)
+            ) {
                 Icon(
-                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                    painter = painterResource(R.drawable.ic_arrow_back),
                     contentDescription = stringResource(R.string.back),
-                    tint = MaterialTheme.colorScheme.onBackground
+                    tint = MaterialTheme.colorScheme.onBackground,
+                    modifier = Modifier.size(24.dp)
                 )
             }
             Spacer(modifier = Modifier.width(4.dp))
@@ -81,9 +85,9 @@ fun SearchScreen(
             )
         }
 
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(4.dp))
 
-        // Search text field
+        // Search input field with bg_search_field styling
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -110,7 +114,7 @@ fun SearchScreen(
                         modifier = Modifier
                             .size(20.dp)
                             .clickable {
-                                // По нажатию на иконку «лупа» логика пустая
+                                // По нажатию на иконку «лупа» логика обработки пустая
                             }
                     )
                 },
@@ -124,7 +128,7 @@ fun SearchScreen(
                         ) {
                             Icon(
                                 imageVector = Icons.Default.Clear,
-                                contentDescription = stringResource(R.string.search_clear),
+                                contentDescription = stringResource(R.string.clear),
                                 tint = YpGray,
                                 modifier = Modifier.size(20.dp)
                             )
@@ -147,7 +151,6 @@ fun SearchScreen(
                 keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
                 keyboardActions = KeyboardActions(
                     onSearch = {
-                        // Полноценная логика поиска будет реализована позже
                         keyboardController?.hide()
                     }
                 )

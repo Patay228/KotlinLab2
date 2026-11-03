@@ -1,6 +1,6 @@
 package com.example.laba2.ui.navigation
 
-import  androidx.compose.runtime.Composable
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -35,8 +35,7 @@ fun PlaylistHost(
         composable(PlaylistScreen.MAIN.name) {
             MainScreen(
                 onSearchClick = { navigateToSearch() },
-                onSettingsClick = { navigateToSettings() },
-                onMediaClick = { /* Зарезервировано для экрана медиатеки */ }
+                onSettingsClick = { navigateToSettings() }
             )
         }
         composable(PlaylistScreen.SEARCH.name) {
