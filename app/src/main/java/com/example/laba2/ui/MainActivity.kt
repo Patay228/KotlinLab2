@@ -1,22 +1,22 @@
 package com.example.laba2.ui
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.fragment.NavHostFragment
-import com.example.laba2.R
-import com.example.laba2.databinding.ActivityMainBinding
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.navigation.compose.rememberNavController
+import com.example.laba2.ui.navigation.PlaylistHost
+import com.example.laba2.ui.theme.PlaylistMakerTheme
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
-
+class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        val navHost = supportFragmentManager
-            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        val navController = navHost.navController
-        // на будущее: binding.bottomNav.setupWithNavController(navController)
+        enableEdgeToEdge()
+        setContent {
+            PlaylistMakerTheme {
+                val navController = rememberNavController()
+                PlaylistHost(navController = navController)
+            }
+        }
     }
 }
