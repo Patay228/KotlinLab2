@@ -1,19 +1,20 @@
-package com.example.laba2.ui.screens
+package com.example.laba2.ui.search
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -29,8 +30,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.laba2.R
-import com.example.laba2.data.Track
-import com.example.laba2.ui.theme.YpGray
+import com.example.laba2.domain.model.Track
 
 @Composable
 fun DetailsScreen(
@@ -43,30 +43,41 @@ fun DetailsScreen(
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
             .statusBarsPadding()
-            .padding(16.dp)
+            .padding(horizontal = 24.dp)
     ) {
-        IconButton(onClick = onBackClick) {
-            Icon(
-                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                contentDescription = stringResource(R.string.back),
-                tint = MaterialTheme.colorScheme.onBackground
-            )
-        }
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        Icon(
-            painter = painterResource(id = android.R.drawable.ic_menu_gallery),
-            contentDescription = "Track cover",
+        // Back Button
+        Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(240.dp)
-                .clip(RoundedCornerShape(8.dp)),
-            tint = Color.LightGray
+                .padding(top = 4.dp, bottom = 16.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            IconButton(
+                onClick = onBackClick,
+                modifier = Modifier.size(48.dp)
+            ) {
+                Icon(
+                    painter = painterResource(R.drawable.ic_arrow_back),
+                    contentDescription = stringResource(R.string.back),
+                    tint = MaterialTheme.colorScheme.onBackground,
+                    modifier = Modifier.size(24.dp)
+                )
+            }
+        }
+
+        // Album Art Placeholder
+        Image(
+            painter = painterResource(id = android.R.drawable.ic_menu_gallery),
+            contentDescription = track.trackName,
+            modifier = Modifier
+                .fillMaxWidth()
+                .aspectRatio(1f)
+                .clip(RoundedCornerShape(8.dp))
         )
 
         Spacer(modifier = Modifier.height(24.dp))
 
+        // Track Name
         Text(
             text = track.trackName,
             fontSize = 22.sp,
@@ -76,39 +87,31 @@ fun DetailsScreen(
 
         Spacer(modifier = Modifier.height(8.dp))
 
+        // Artist Name
         Text(
             text = track.artistName,
             fontSize = 14.sp,
-            color = YpGray
+            color = Color.Gray
         )
 
-        Spacer(modifier = Modifier.height(24.dp))
+        Spacer(modifier = Modifier.height(28.dp))
 
-        DetailRow(title = "Длительность", value = track.trackTime)
-        if (track.collectionName.isNotEmpty()) {
-            DetailRow(title = "Альбом", value = track.collectionName)
+        // Duration Info Row
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = "Длительность",
+                fontSize = 13.sp,
+                color = Color.Gray
+            )
+            Text(
+                text = track.trackTime,
+                fontSize = 13.sp,
+                color = MaterialTheme.colorScheme.onBackground
+            )
         }
-        if (track.releaseDate.isNotEmpty()) {
-            DetailRow(title = "Год", value = track.releaseDate)
-        }
-        if (track.primaryGenreName.isNotEmpty()) {
-            DetailRow(title = "Жанр", value = track.primaryGenreName)
-        }
-        if (track.country.isNotEmpty()) {
-            DetailRow(title = "Страна", value = track.country)
-        }
-    }
-}
-
-@Composable
-private fun DetailRow(title: String, value: String) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = 8.dp),
-        horizontalArrangement = Arrangement.SpaceBetween
-    ) {
-        Text(text = title, fontSize = 13.sp, color = YpGray)
-        Text(text = value, fontSize = 13.sp, color = MaterialTheme.colorScheme.onBackground)
     }
 }

@@ -1,4 +1,4 @@
-package com.example.laba2.ui.screens
+package com.example.laba2.ui.setting
 
 import android.content.Intent
 import android.net.Uri
@@ -40,10 +40,12 @@ import com.example.laba2.ui.theme.YpBlue
 import com.example.laba2.ui.theme.YpGray
 
 @Composable
-fun SettingsScreen(
-    onBackClick: () -> Unit,
+fun SettingScreen(
+    onBackClick: () -> Unit = {},
+    navigateBack: () -> Unit = onBackClick,
     modifier: Modifier = Modifier
 ) {
+    val backAction = if (onBackClick != {}) onBackClick else navigateBack
     val context = LocalContext.current
     var isDarkTheme by remember { mutableStateOf(false) }
 
@@ -68,7 +70,7 @@ fun SettingsScreen(
             verticalAlignment = Alignment.CenterVertically
         ) {
             IconButton(
-                onClick = onBackClick,
+                onClick = backAction,
                 modifier = Modifier.size(48.dp)
             ) {
                 Icon(
@@ -147,6 +149,15 @@ fun SettingsScreen(
             }
         )
     }
+}
+
+@Composable
+fun SettingsScreen(
+    onBackClick: () -> Unit = {},
+    navigateBack: () -> Unit = onBackClick,
+    modifier: Modifier = Modifier
+) {
+    SettingScreen(onBackClick = onBackClick, navigateBack = navigateBack, modifier = modifier)
 }
 
 @Composable

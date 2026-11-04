@@ -7,12 +7,12 @@ import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.laba2.data.Track
-import com.example.laba2.ui.screens.DetailsScreen
-import com.example.laba2.ui.screens.MainScreen
-import com.example.laba2.ui.screens.SearchScreen
-import com.example.laba2.ui.screens.SettingsScreen
-import com.example.laba2.ui.view_model.SearchViewModel
+import com.example.laba2.domain.model.Track
+import com.example.laba2.presentation.SearchViewModel
+import com.example.laba2.ui.main.MainScreen
+import com.example.laba2.ui.search.DetailsScreen
+import com.example.laba2.ui.search.SearchScreen
+import com.example.laba2.ui.setting.SettingScreen
 import com.google.gson.Gson
 
 @Composable
@@ -61,7 +61,7 @@ fun PlaylistHost(
         }
 
         composable(route = "setting") {
-            SettingsScreen(
+            SettingScreen(
                 onBackClick = { navController.popBackStack() }
             )
         }

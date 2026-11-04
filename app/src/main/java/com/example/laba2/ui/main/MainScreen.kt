@@ -1,4 +1,4 @@
-package com.example.laba2.ui.screens
+package com.example.laba2.ui.main
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -32,12 +32,17 @@ import com.example.laba2.ui.theme.YpGray
 
 @Composable
 fun MainScreen(
-    onSearchClick: () -> Unit,
-    onSettingsClick: () -> Unit,
+    onSearchClick: () -> Unit = {},
+    onSettingsClick: () -> Unit = {},
     onPlaylistsClick: () -> Unit = {},
     onFavoritesClick: () -> Unit = {},
+    navigateToSearch: () -> Unit = onSearchClick,
+    navigateToSettings: () -> Unit = onSettingsClick,
     modifier: Modifier = Modifier
 ) {
+    val searchAction = if (onSearchClick != {}) onSearchClick else navigateToSearch
+    val settingsAction = if (onSettingsClick != {}) onSettingsClick else navigateToSettings
+
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -65,7 +70,7 @@ fun MainScreen(
         MainMenuItem(
             icon = painterResource(R.drawable.ic_search),
             title = stringResource(R.string.menu_search),
-            onClick = onSearchClick
+            onClick = searchAction
         )
 
         MainMenuItem(
@@ -83,7 +88,7 @@ fun MainScreen(
         MainMenuItem(
             icon = painterResource(R.drawable.ic_settings),
             title = stringResource(R.string.menu_settings),
-            onClick = onSettingsClick
+            onClick = settingsAction
         )
     }
 }
@@ -98,29 +103,29 @@ private fun MainMenuItem(
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .height(64.dp)
             .clickable(onClick = onClick)
-            .padding(horizontal = 16.dp),
+            .padding(horizontal = 16.dp, vertical = 20.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(
             painter = icon,
-            contentDescription = null,
-            tint = MaterialTheme.colorScheme.onBackground,
-            modifier = Modifier.size(24.dp)
+            contentDescription = title,
+            modifier = Modifier.size(24.dp),
+            tint = MaterialTheme.colorScheme.onBackground
         )
         Spacer(modifier = Modifier.width(16.dp))
         Text(
             text = title,
-            fontSize = 18.sp,
+            fontSize = 16.sp,
+            fontWeight = FontWeight.Medium,
             color = MaterialTheme.colorScheme.onBackground,
             modifier = Modifier.weight(1f)
         )
         Icon(
             painter = painterResource(R.drawable.ic_arrow_forward),
             contentDescription = null,
-            tint = YpGray,
-            modifier = Modifier.size(24.dp)
+            modifier = Modifier.size(16.dp),
+            tint = YpGray
         )
     }
 }

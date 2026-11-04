@@ -10,9 +10,9 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
+import com.example.laba2.presentation.SearchViewModel
 import com.example.laba2.ui.navigation.PlaylistHost
 import com.example.laba2.ui.theme.PlaylistMakerTheme
-import com.example.laba2.ui.view_model.SearchViewModel
 import com.google.gson.Gson
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

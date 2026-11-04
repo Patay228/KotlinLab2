@@ -1,4 +1,4 @@
-package com.example.laba2.ui.screens
+package com.example.laba2.ui.search
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -51,9 +51,9 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.laba2.R
-import com.example.laba2.data.Track
-import com.example.laba2.ui.view_model.SearchState
-import com.example.laba2.ui.view_model.SearchViewModel
+import com.example.laba2.domain.model.Track
+import com.example.laba2.presentation.SearchState
+import com.example.laba2.presentation.SearchViewModel
 
 @Composable
 fun SearchScreen(
