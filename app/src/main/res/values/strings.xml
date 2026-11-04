@@ -7,9 +7,15 @@
     
     <string name="search_title">Поиск</string>
     <string name="search_hint">Поиск</string>
+    <string name="search_tracks_placeholder">Поиск</string>
+    <string name="search_icon">Поиск</string>
+    <string name="clear_search">Очистить</string>
     <string name="search_clear">Очистить</string>
     <string name="search_history_title">Вы искали</string>
     <string name="search_nothing_found">Ничего не нашлось</string>
+    <string name="no_tracks_found">Ничего не найдено</string>
+    <string name="check_connection">Проверьте подключение к интернету</string>
+    <string name="arrow_forward">Перейти</string>
 
     <string name="settings_title">Настройки</string>
     <string name="settings_dark_theme">Тёмная тема</string>
