@@ -57,3 +57,11 @@ fun PlaylistMakerTheme(
         content = content
     )
 }
+
+@Composable
+fun PlaylistMarketTheme(
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    content: @Composable () -> Unit
+) {
+    PlaylistMakerTheme(darkTheme = darkTheme, content = content)
+}
