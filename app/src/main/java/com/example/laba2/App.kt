@@ -15,7 +15,7 @@ class App : Application() {
             androidContext(this@App)
             val viewModelModule = module {
                 viewModel {
-                    SearchViewModel(get())
+                    SearchViewModel(tracksInteractor = get())
                 }
             }
             modules(repositoryModule, viewModelModule)
